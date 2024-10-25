@@ -1,13 +1,52 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MustafaDeger</title>
+</head>
+<style>
 
-  <head>
+    body{
+    display: flex; /* Flexbox kullan */
+    justify-content: center; /* Yatay ortalama */
+    align-items: center; /* Dikey ortalama */
+    height: 100vh; /* Tüm yüksekliği kapla */
+    margin: 0; /* Varsayılan margin yok */
+    background-color: #f0f0f0; /* Arka plan rengi */
+    flex-direction: column;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    #isim{
+    font-size: 32px;
+    margin: 15px;
+    }
+    .button {
+    background-color: #4CAF50; /* Yeşil arka plan */
+    border: none; /* Kenarlık yok */
+    color: white; /* Yazı rengi beyaz */
+    padding: 15px 32px; /* İç boşluk */
+    text-align: center; /* Metin ortalanır */
+    text-decoration: none; /* Alt çizgi yok */
+    display: inline-block; /* Yan yana dizilmesini sağlar */
+    font-size: 26px; /* Yazı boyutu */
+    margin: 4px 2px; /* Dış boşluk */
+    cursor: pointer; /* Fareyle üzerine gelince gösterilecek imleç */
+    border-radius: 10px; /* Köşeleri yuvarlaştır */
+    transition: background-color 0.3s; /* Arka plan rengi geçiş efekti */
+    }
+
+    .button:hover {
+    background-color: #45a049; /* Hover durumunda daha koyu yeşil */
+    }
     
-  </head>
-
-  <body>
-  <a href="hafta2.html"> Hafta 2</a>
-  <a href="hafta3.html"> Hafta 3 </a>
+</style>
+<body>
+   <label id="isim">Mustafa Değer</label>
+  <a class="button" href="hafta2.html"> Hafta 2</a> 
+  <a class="button" href="hafta3.html"> Hafta 3 </a>
 
     
-  </body>
+</html>
+</body>
 </html>
