@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Programcılığı Testi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            margin-top: 15px;
+            display: block;
+        }
+        input[type="text"], input[type="email"], input[type="number"], input[type="tel"], input[type="url"], input[type="date"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="test-container">
+    <h2>Web Programcılığı Testi</h2>
+    <form method="POST">
+        
+        <div class="question">
+            <label for="q1">1. HTML nedir?</label>
+            <textarea id="q1" name="q1" rows="4" required></textarea>
+        </div>
+
+        <div class="question">
+            <label>2. Aşağıdakilerden hangisi HTML etiketidir?</label>
+            <label for="q2a">a) div</label>
+            <input type="radio" id="q2a" name="q2" value="div" required >
+            <label for="q2b">b) function</label>
+            <input type="radio" id="q2b" name="q2" value="function">
+            <label for="q2c">c) console</label>
+            <input type="radio" id="q2c" name="q2" value="console">
+        </div>
+
+        <div class="question">
+            <label for="q3">3. CSS nedir?</label>
+            <input type="text" id="q3" name="q3" required>
+        </div>
+
+        <div class="question">
+            <label for="q4">4. JavaScript hangi tür bir programlama dilidir?</label>
+            <select id="q4" name="q4" required>
+                <option value="">Seçin...</option>
+                <option value="client-side">İstemci Tarafında</option>
+                <option value="server-side">Sunucu Tarafında</option>
+                <option value="both">Her İkisi</option>
+            </select>
+        </div>
+
+        <div class="question">
+            <label for="q5">5. Bir web sitesinin URL'sini girin:</label>
+            <input type="url" id="q5" name="q5" required>
+        </div>
+
+        <div class="question">
+            <label for="q6">6. Kaç yıldır web programcılığı yapıyorsunuz?</label>
+            <input type="number" id="q6" name="q6" min="0" required>
+        </div>
+
+        <div class="question">
+            <label for="q7">7. İletişim telefon numaranızı girin:</label>
+            <input type="tel" id="q7" name="q7" required>
+        </div>
+
+        <div class="question">
+            <label for="q8">8. Doğum tarihiniz:</label>
+            <input type="date" id="q8" name="q8" required>
+        </div>
+
+        <div class="question">
+            <label for="q9">9. Web programcılığı hakkında ne düşünüyorsunuz?</label>
+            <textarea id="q9" name="q9" rows="4" required></textarea>
+        </div>
+
+        <input type="submit" value="Testi Gönder">
+    </form>
+</div>
+
+</body>
+</html>
