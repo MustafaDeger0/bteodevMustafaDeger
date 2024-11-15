@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Efektli Yuvarlak Divler</title>
+<style>
+  body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  .circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  /* 1. Yukarı aşağı gidip gelen */
+  .circle1 {
+    background-color: #4caf50;
+    animation: upDown 2s infinite;
+  }
+
+  @keyframes upDown {
+    0%, 100% { transform: translateY(-20px); }
+    50% { transform: translateY(20px); }
+  }
+
+  /* 2. Büyüyüp küçülen ve rengi değişen */
+  .circle2 {
+    background-color: #ff5722;
+    animation: growShrink 2s infinite;
+  }
+
+  @keyframes growShrink {
+    0%, 100% {
+      transform: scale(1);
+      background-color: #ff5722;
+    }
+    50% {
+      transform: scale(1.5);
+      background-color: #2196f3;
+    }
+  }
+
+  /* 3. Transparan değeri artan ve azalan */
+  .circle3 {
+    background-color: #9c27b0;
+    animation: fadeInOut 2s infinite;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* 4. Sağa sola gidip gelen */
+  .circle4 {
+    background-color: #ffeb3b;
+    animation: sideToSide 2s infinite;
+  }
+
+  @keyframes sideToSide {
+    0%, 100% { transform: translateX(-20px); }
+    50% { transform: translateX(20px); }
+  }
+
+  /* 5. Kendi etrafında sağdan sola dönen */
+  .circle5 {
+    background-color: #f44336;
+    animation: rotateLeft 2s infinite linear;
+    transform-origin: center; /* Döndürme merkezi, kendi etrafında dönmesi için */
+  }
+
+  @keyframes rotateLeft {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); } /* Sağdan sola dönüş */
+  }
+
+</style>
+</head>
+<body>
+
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+<div class="circle circle3"></div>
+<div class="circle circle4"></div>
+<div class="circle circle5">:)</div>
+
+</body>
+</html>
