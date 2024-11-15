@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ortada Sabitlenmiş Container ve Rastgele Arka Plan Rengi</title>
+    <style>
+       
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            transition: background-color 0.5s;
+        }
+
+        
+        #main-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            text-align: center;
+            width: 200px;
+            margin: 30px;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            display: block; 
+        }
+
+        .button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-container">
+        <div class="container">
+            <img id="resim1" class="image" alt="Resim 1">
+            <button id="hide1" class="button" onclick="toggleImage('resim1', 'show1', 'hide1')" style="display: none;">Gizle</button>
+            <button id="show1" class="button" onclick="toggleImage('resim1', 'show1', 'hide1')">Göster</button>
+        </div>
+        <div class="container">
+            <img id="resim2" class="image" alt="Resim 2">
+            <button id="hide2" class="button" onclick="toggleImage('resim2', 'show2', 'hide2')" style="display: none;">Gizle</button>
+            <button id="show2" class="button" onclick="toggleImage('resim2', 'show2', 'hide2')">Göster</button>
+        </div>
+        <div class="container">
+            <img id="resim3" class="image" alt="Resim 3">
+            <button id="hide3" class="button" onclick="toggleImage('resim3', 'show3', 'hide3')" style="display: none;">Gizle</button>
+            <button id="show3" class="button" onclick="toggleImage('resim3', 'show3', 'hide3')">Göster</button>
+        </div>
+    </div>
+
+    <script>
+       
+        const backgroundColors = ["#f9d5e5", "#ffbdbd", "#c9c9ff", "#d4a5a5", "#f3c7d5", "#e2f0cb", "#a8e6cf", "#dcedc1", "#ffd3b6", "#ffaaa5"];
+
+        
+        function setRandomBackgroundColor() {
+            const randomColor = backgroundColors[Math.floor(Math.random() * backgroundColors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+       
+        const images = [
+            'resim1.jpg',
+            'resim2.jpg',
+            'resim3.jpg',
+            'resim4.jpg',
+            'resim5.jpg',
+            'resim6.jpg',
+            'resim7.jpg',
+            'resim8.jpg',
+            'resim9.jpg',
+            'resim10.jpg'
+        ];
+
+       
+        function setRandomImages() {
+            document.getElementById("resim1").src = images[Math.floor(Math.random() * images.length)];
+            document.getElementById("resim2").src = images[Math.floor(Math.random() * images.length)];
+            document.getElementById("resim3").src = images[Math.floor(Math.random() * images.length)];
+        }
+
+        
+        function toggleImage(imgId, showBtnId, hideBtnId) {
+            const img = document.getElementById(imgId);
+            const showBtn = document.getElementById(showBtnId);
+            const hideBtn = document.getElementById(hideBtnId);
+
+            if (img.style.display === "none") {
+                img.style.display = "block";
+                showBtn.style.display = "none";
+                hideBtn.style.display = "inline-block";
+            } else {
+                img.style.display = "none";
+                showBtn.style.display = "inline-block";
+                hideBtn.style.display = "none";
+            }
+        }
+
+       
+        window.onload = function() {
+            setRandomBackgroundColor();
+            setRandomImages();
+        }
+    </script>
+
+</body>
+</html>
