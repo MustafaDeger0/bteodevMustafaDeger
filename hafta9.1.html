@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daire</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #fff;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(8, 40px); 
+      gap: 5px; 
+    }
+    .circle {
+      width: 30px; 
+      height: 30px; 
+      border-radius: 50%; 
+      border: 2px solid transparent; 
+      background: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="grid" class="grid"></div>
+
+  <script>
+    const grid = document.getElementById("grid");
+
+    const rows = 8; 
+    const columns = 8;
+
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < columns; j++) {
+        const circle = document.createElement("div");
+        circle.classList.add("circle");
+
+        
+        const hueStart = 200; 
+        const hueEnd = 120;   
+        const hue = hueStart - ((hueStart - hueEnd) / (rows - 1)) * i;
+        const saturation = 100 - (10 * j); 
+
+        const gradient = `hsl(${hue}, ${saturation}%, 50%)`;
+        circle.style.borderColor = gradient; 
+        grid.appendChild(circle);
+      }
+    }
+  </script>
+</body>
+</html>
