@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h3 {
+      font-size: 1.2em;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JSON Quiz</h1>
+  <form id="quizForm">
+
+  </form>
+
+  <button type="button" onclick="checkAnswers()">Sonuçları Göster</button>
+
+  <script>
+    
+    fetch('hafta9.2.json')
+      .then(response => response.json())
+      .then(data => {
+        const quizForm = document.getElementById('quizForm');
+        data.quiz.forEach((question, index) => {
+          const questionElement = document.createElement('div');
+          questionElement.classList.add('question');
+
+          const questionTitle = document.createElement('h3');
+          questionTitle.innerText = `${index + 1}. ${question.question}`;
+          questionElement.appendChild(questionTitle);
+
+          Object.keys(question.options).forEach(option => {
+            const label = document.createElement('label');
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = `q${index + 1}`;
+            input.value = option;
+
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(` ${option}: ${question.options[option]}`));
+
+            questionElement.appendChild(label);
+            questionElement.appendChild(document.createElement('br'));
+          });
+
+          quizForm.appendChild(questionElement);
+        });
+      })
+      .catch(error => {
+        console.error('JSON verisi yüklenemedi:', error);
+      });
+
+   
+    function checkAnswers() {
+      let score = 0;
+      const formData = new FormData(document.getElementById('quizForm'));
+
+      fetch('hafta9.2.json')
+        .then(response => response.json())
+        .then(data => {
+          data.quiz.forEach((question, index) => {
+            const selectedAnswer = formData.get(`q${index + 1}`);
+            if (selectedAnswer === question.correctAnswer) {
+              score++;
+            }
+          });
+          alert(`Test Skorunuz: ${score}/10`);
+        });
+    }
+  </script>
+
+</body>
+</html>
