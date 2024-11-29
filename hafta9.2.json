@@ -1,98 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JSON Quiz</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 0;
-      background-color: #f4f4f9;
-    }
-    .question {
-      margin-bottom: 20px;
-    }
-    .question h3 {
-      font-size: 1.2em;
-    }
-    button {
-      padding: 10px 15px;
-      font-size: 16px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #218838;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>JSON Quiz</h1>
-  <form id="quizForm">
-
-  </form>
-
-  <button type="button" onclick="checkAnswers()">Sonuçları Göster</button>
-
-  <script>
-    
-    fetch('hafta9.2.json')
-      .then(response => response.json())
-      .then(data => {
-        const quizForm = document.getElementById('quizForm');
-        data.quiz.forEach((question, index) => {
-          const questionElement = document.createElement('div');
-          questionElement.classList.add('question');
-
-          const questionTitle = document.createElement('h3');
-          questionTitle.innerText = `${index + 1}. ${question.question}`;
-          questionElement.appendChild(questionTitle);
-
-          Object.keys(question.options).forEach(option => {
-            const label = document.createElement('label');
-            const input = document.createElement('input');
-            input.type = 'radio';
-            input.name = `q${index + 1}`;
-            input.value = option;
-
-            label.appendChild(input);
-            label.appendChild(document.createTextNode(` ${option}: ${question.options[option]}`));
-
-            questionElement.appendChild(label);
-            questionElement.appendChild(document.createElement('br'));
-          });
-
-          quizForm.appendChild(questionElement);
-        });
-      })
-      .catch(error => {
-        console.error('JSON verisi yüklenemedi:', error);
-      });
-
-   
-    function checkAnswers() {
-      let score = 0;
-      const formData = new FormData(document.getElementById('quizForm'));
-
-      fetch('hafta9.2.json')
-        .then(response => response.json())
-        .then(data => {
-          data.quiz.forEach((question, index) => {
-            const selectedAnswer = formData.get(`q${index + 1}`);
-            if (selectedAnswer === question.correctAnswer) {
-              score++;
-            }
-          });
-          alert(`Test Skorunuz: ${score}/10`);
-        });
-    }
-  </script>
-
-</body>
-</html>
+{
+    "quiz": [
+      {
+        "question": "JSON nedir?",
+        "options": {
+          "a": "Bir programlama dili",
+          "b": "Hafif bir veri formatı",
+          "c": "Sadece bir veri tabanı",
+          "d": "Bir işletim sistemi",
+          "e": "Bir yazılım kütüphanesi"
+        },
+        "correctAnswer": "b"
+      },
+      {
+        "question": "JSON'da bir veri çifti nasıl ifade edilir?",
+        "options": {
+          "a": "Anahtar:Değer",
+          "b": "Anahtar=Değer",
+          "c": "Anahtar-Değer",
+          "d": "Anahtar>Değer",
+          "e": "Anahtar<Değer"
+        },
+        "correctAnswer": "a"
+      },
+      {
+        "question": "JSON'da bir diziyi nasıl tanımlarsınız?",
+        "options": {
+          "a": "Parantezler (())",
+          "b": "Köşeli parantezler ([])",
+          "c": "Süslü parantezler ({})",
+          "d": "Eğimli parantezler (//)",
+          "e": "Tırnak işaretleri ('')"
+        },
+        "correctAnswer": "b"
+      },
+      {
+        "question": "JSON'da geçerli bir veri türü değildir?",
+        "options": {
+          "a": "String",
+          "b": "Boolean",
+          "c": "Function",
+          "d": "Number",
+          "e": "Null"
+        },
+        "correctAnswer": "c"
+      },
+      {
+        "question": "JSON ile hangi dosya uzantısı kullanılır?",
+        "options": {
+          "a": ".xml",
+          "b": ".json",
+          "c": ".txt",
+          "d": ".csv",
+          "e": ".yml"
+        },
+        "correctAnswer": "b"
+      },
+      {
+        "question": "JSON'da bir nesne nasıl başlar ve biter?",
+        "options": {
+          "a": "[]",
+          "b": "{}",
+          "c": "()",
+          "d": "<>",
+          "e": "//"
+        },
+        "correctAnswer": "b"
+      },
+      {
+        "question": "JSON'da bir string nasıl ifade edilir?",
+        "options": {
+          "a": "Çift tırnak (\" \")",
+          "b": "Tek tırnak (' ')",
+          "c": "Çift veya tek tırnak",
+          "d": "Kesme işareti (` `)",
+          "e": "Hiçbir tırnak kullanılmaz"
+        },
+        "correctAnswer": "a"
+      },
+      {
+        "question": "JSON ile hangi dil standartları uyumludur?",
+        "options": {
+          "a": "Yalnızca Java",
+          "b": "Yalnızca Python",
+          "c": "Çoğu modern programlama dili",
+          "d": "Sadece düşük seviyeli diller",
+          "e": "Hiçbiri"
+        },
+        "correctAnswer": "c"
+      },
+      {
+        "question": "JSON dosyasını JavaScript'te bir nesneye nasıl dönüştürürsünüz?",
+        "options": {
+          "a": "JSON.parse()",
+          "b": "JSON.stringify()",
+          "c": "JSON.convert()",
+          "d": "JSON.objectify()",
+          "e": "JSON.toObject()"
+        },
+        "correctAnswer": "a"
+      },
+      {
+        "question": "JSON'da bir değer boş (null) olarak nasıl tanımlanır?",
+        "options": {
+          "a": "\"boş\"",
+          "b": "null",
+          "c": "boşluk (\" \")",
+          "d": "undefined",
+          "e": "\"None\""
+        },
+        "correctAnswer": "b"
+      }
+    ]
+  }
+  
